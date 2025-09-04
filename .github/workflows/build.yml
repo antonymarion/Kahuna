@@ -25,6 +25,9 @@ jobs:
         run: |
           pip install -U platformio
 
+      - name: Install MAVLink library
+        run: pio lib install mavlink
+
       # 3. Compilation
       - name: Build firmware
         run: pio run
