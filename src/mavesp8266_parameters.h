@@ -92,7 +92,15 @@ public:
         ID_GATEWAYSTA,
         ID_SUBNETSTA,
         ID_UART,
-        ID_COUNT
+        ID_COUNT,
+        ID_UAV1,
+        ID_UAV2,
+        ID_UAV3,
+        ID_UAV4,
+        ID_SN1,
+        ID_SN2,
+        ID_SN3,
+        ID_SN4
     };
 
     void begin();

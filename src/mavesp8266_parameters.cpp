@@ -66,6 +66,9 @@ uint32_t _uart_baud_rate;
 uint32_t _flash_left;
 uint32_t _wifi_targetsta;
 
+char _uav_nb[16] = "UAS-FR-651384";
+char _sn_nb[16] = "1H82582569285";
+
 //-- Parameters
 //   No string support in parameters so we stash a char[16] into 4 uint32_t
 struct stMavEspParameters mavParameters[] = {
@@ -96,6 +99,14 @@ struct stMavEspParameters mavParameters[] = {
     {"WIFI_GATEWAYSTA", &_wifi_gatewaysta, MavESP8266Parameters::ID_GATEWAYSTA, sizeof(uint32_t), MAV_PARAM_TYPE_UINT32, false},
     {"WIFI_SUBNET_STA", &_wifi_subnetsta, MavESP8266Parameters::ID_SUBNETSTA, sizeof(uint32_t), MAV_PARAM_TYPE_UINT32, false},
     {"UART_BAUDRATE", &_uart_baud_rate, MavESP8266Parameters::ID_UART, sizeof(uint32_t), MAV_PARAM_TYPE_UINT32, false},
+    {"UAV_NB1", &_uav_nb[0], MavESP8266Parameters::ID_UAV1, sizeof(uint32_t), MAV_PARAM_TYPE_UINT32, false},
+    {"UAV_NB2", &_uav_nb[4], MavESP8266Parameters::ID_UAV2, sizeof(uint32_t), MAV_PARAM_TYPE_UINT32, false},
+    {"UAV_NB3", &_uav_nb[8], MavESP8266Parameters::ID_UAV3, sizeof(uint32_t), MAV_PARAM_TYPE_UINT32, false},
+    {"UAV_NB4", &_uav_nb[12], MavESP8266Parameters::ID_UAV4, sizeof(uint32_t), MAV_PARAM_TYPE_UINT32, false},
+    {"SN_NB1", &_sn_nb[0], MavESP8266Parameters::ID_SN1, sizeof(uint32_t), MAV_PARAM_TYPE_UINT32, false},
+    {"SN_NB2", &_sn_nb[4], MavESP8266Parameters::ID_SN2, sizeof(uint32_t), MAV_PARAM_TYPE_UINT32, false},
+    {"SN_NB3", &_sn_nb[8], MavESP8266Parameters::ID_SN3, sizeof(uint32_t), MAV_PARAM_TYPE_UINT32, false},
+    {"SN_NB4", &_sn_nb[12], MavESP8266Parameters::ID_SN4, sizeof(uint32_t), MAV_PARAM_TYPE_UINT32, false},
 };
 
 //---------------------------------------------------------------------------------
