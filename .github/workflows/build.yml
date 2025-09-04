@@ -1,0 +1,39 @@
+name: Build Kahuna Firmware
+
+on:
+  push:
+    branches:
+      - "UAS-FR-651384"   # déclenche sur tous les commits dans toutes les branches
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Récupération du code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Installation de PlatformIO
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install PlatformIO
+        run: |
+          pip install -U platformio
+
+      # 3. Compilation
+      - name: Build firmware
+        run: pio run
+
+      # 4. (Optionnel) Sauvegarde des binaires générés
+      - name: Upload firmware artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: kahuna-firmware
+          path: |
+            .pio/build/**/firmware.bin
+            .pio/build/**/firmware.elf
