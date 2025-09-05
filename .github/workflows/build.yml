@@ -10,10 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        env: [esp01_1m, esp07s, esp12e]
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -27,11 +23,11 @@ jobs:
         run: pip install --upgrade platformio
 
       - name: Build firmware
-        run: pio run -e ${{ matrix.env }}
+        run: pio run -e esp07s
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: kahuna-firmware-${{ matrix.env }}
+          name: firmware-kahuna
           path: |
-            .pio/build/${{ matrix.env }}/firmware.bin
+            .pio/build/esp07s/firmware.bin
