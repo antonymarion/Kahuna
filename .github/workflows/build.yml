@@ -28,6 +28,13 @@ jobs:
       - name: Build firmware
         run: pio run -e esp07s
 
+      - name: List build directory contents
+        run: |
+          echo "Contents of .pio/build/:"
+          ls -la .pio/build/ || echo "Build directory not found"
+          echo "Contents of .pio/build/esp07s/:"
+          ls -la .pio/build/esp07s/ || echo "esp07s directory not found"
+
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
