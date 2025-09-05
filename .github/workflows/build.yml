@@ -1,6 +1,5 @@
 name: Build Kahuna Firmware
 
-# Déclenche le workflow sur chaque push ou pull request
 on:
   push:
     branches:
@@ -13,32 +12,26 @@ jobs:
 
     strategy:
       matrix:
-        env: [esp01_1m, esp07s, esp12e]  # Liste de tous les environnements à compiler
+        env: [esp01_1m, esp07s, esp12e]
 
     steps:
-      # 1️⃣ Récupère le code du dépôt
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Installe Python 3
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      # 3️⃣ Installe PlatformIO
       - name: Install PlatformIO
-        run: pip install -U platformio
+        run: pip install --upgrade platformio
 
-      # 4️⃣ Compile le firmware pour l’environnement courant
       - name: Build firmware
         run: pio run -e ${{ matrix.env }}
 
-      # 5️⃣ Sauvegarde les binaires compilés comme artifacts
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
           name: kahuna-firmware-${{ matrix.env }}
           path: |
             .pio/build/${{ matrix.env }}/firmware.bin
-            .pio/build/${{ matrix.env }}/firmware.elf
