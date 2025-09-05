@@ -40,4 +40,4 @@ jobs:
         with:
           name: firmware-kahuna
           path: |
-            .pio/build/esp07s/firmware.bin
+            .pio/build/esp07s/mavesp-esp07s-2.4.0.bin
