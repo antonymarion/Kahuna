@@ -23,11 +23,11 @@ jobs:
         run: pip install --upgrade platformio
 
       - name: Build firmware
-        run: pio run -e esp01_1m
+        run: pio run -e esp07s
 
       - name: Upload firmware artifacts
         uses: actions/upload-artifact@v4
         with:
           name: firmware-kahuna
           path: |
-            .pio/build/esp01_1m/firmware.bin
+            .pio/build/esp07s/firmware.bin
