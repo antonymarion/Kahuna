@@ -1,4 +1,4 @@
-name: Build Kahuna Firmware
+name: Build Kahuna Firmwares
 
 on:
   push:
